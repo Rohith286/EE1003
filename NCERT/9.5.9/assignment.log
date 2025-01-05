@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.6)  4 JAN 2025 21:08
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.6)  5 JAN 2025 12:16
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1963,13 +1963,16 @@ File: ts1txr.fd 2000/12/15 v3.1
 /local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 ]
-<figs/fig.png, id=45, 722.7pt x 433.62pt>
+<figs/fig.png, id=52, 722.7pt x 433.62pt>
 File: figs/fig.png Graphic file (type png)
 <use figs/fig.png>
-Package pdftex.def Info: figs/fig.png  used on input line 106.
+Package pdftex.def Info: figs/fig.png  used on input line 121.
 (pdftex.def)             Requested size: 364.1953pt x 218.51653pt.
- [2 <./figs/fig.png>]
-(./assignment.aux)
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [2]
+[3 <./figs/fig.png>] (./assignment.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1978,25 +1981,26 @@ Package rerunfilecheck Info: File `assignment.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 53176 strings out of 474116
- 1264038 string characters out of 5743683
- 1949187 words of memory out of 5000000
+ 53186 strings out of 474116
+ 1264098 string characters out of 5743683
+ 1951187 words of memory out of 5000000
  74716 multiletter control sequences out of 15000+600000
- 624337 words of font info for 171 fonts, out of 8000000 for 9000
+ 627029 words of font info for 175 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 109i,11n,109p,1200b,1028s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></us
-r/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local
-/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxsc.pfb></usr/local/texli
-ve/2024/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2024
-/texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts
-/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw
-/times/utmri8a.pfb>
-Output written on assignment.pdf (2 pages, 81465 bytes).
+ 109i,11n,109p,1200b,1026s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxb.pfb></usr
+/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></usr/local
+/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local/texliv
+e/2024/texmf-dist/fonts/type1/public/txfonts/rtxsc.pfb></usr/local/texlive/2024
+/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2024/texmf-
+dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2024/texmf-dist/fo
+nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
+urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/
+utmri8a.pfb>
+Output written on assignment.pdf (3 pages, 87588 bytes).
 PDF statistics:
- 94 PDF objects out of 1000 (max. 8388607)
- 55 compressed objects within 1 object stream
- 7 named destinations out of 1000 (max. 500000)
+ 109 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
+ 13 named destinations out of 1000 (max. 500000)
  114 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -57,21 +57,40 @@
 
 \section*{Exercise : 9.5}
 \begin{enumerate}
-\item [9)] Solve the differential equation $y dx + x \log{\brak{\frac{y}{x}}} dy - 2x dy = 0$\\
-\textbf{Solution:}
+\item [9)] Solve the differential equation $y \, dx + x \log{\brak{\frac{y}{x}}} \, dy - 2x \, dy = 0$ \\
+\textbf{Solution (using the Method of Finite Differences):}\\
 The given differential equation is 
-\begin{align*}
-    y dx + x \log{\brak{\frac{y}{x}}} dy - 2x dy = 0
-\end{align*}
-On rearranging, we get:
 \begin{align}
-    \frac{dy}{dx} = \frac{\frac{y}{x}}{2 - \log{\brak{\frac{y}{x}}}}
+    y \, dx + x \log{\brak{\frac{y}{x}}} \, dy - 2x \, dy = 0
 \end{align}
+\begin{align}
+y \, dx &= \left(2x - x \log\left(\frac{y}{x}\right)\right) \, dy \\
+\implies \frac{dx}{dy} &= \frac{2x - x \log\left(\frac{y}{x}\right)}{y} \\
+\implies \frac{dy}{dx} &= \frac{\frac{y}{x}}{2 - \log\left(\frac{y}{x}\right)} 
+\end{align}
+
+Using the method of finite differences, the next value of $y$ can be computed as:
+
+\begin{align}
+y_{n+1} &= y_n + h \cdot f(x_n, y_n) \\
+f(x, y) &= \frac{\frac{y}{x}}{2 - \log\left(\frac{y}{x}\right)}
+\end{align}
+
+Let $x_0$ be the initial $x$ value and $y_0$ be the initial value and let the step size $h$ be 0.001. The first few iterations are:
+
+\begin{align*}
+x_1 &= x_0 + h, & y_1 &= y_0 + h \cdot \frac{\frac{y_0}{x_0}}{2 - \log\left(\frac{y_0}{x_0}\right)} \\
+x_2 &= x_1 + h, & y_2 &= y_1 + h \cdot \frac{\frac{y_1}{x_1}}{2 - \log\left(\frac{y_1}{x_1}\right)} \\
+&\vdots  & \vdots \\
+x_n &= x_{n-1} + h, & y_n &= y_{n-1} + h \cdot \frac{\frac{y_{n-1}}{x_{n-1}}}{2 - \log\left(\frac{y_{n-1}}{x_{n-1}}\right)}
+\end{align*}
+
+\textbf{Solution (using the general method):}\\
 Let $\frac{y}{x} = v$, i.e., $y = vx$
 \begin{align*}
     \implies \frac{dy}{dx} = v + x \frac{dv}{dx}
 \end{align*}
-Substituting in equation (1), we get:
+Substituting in equation (4), we get:
 \begin{align*}
     v + x \frac{dv}{dx} = \frac{v}{2 - \log{v}}\\
     \implies x \frac{dv}{dx} = \frac{v}{2 - \log{v}} - v\\
@@ -89,18 +108,14 @@ Replacing $v$ by $\frac{y}{x}$ and rearranging, we have:
     \log{\brak{\frac{y}{x}}} - 1 = C x \brak{\frac{y}{x}}
 \end{align*}
 \begin{align}
-    \log{\brak{\frac{y}{x}}} - 1 = C y
+    \log{\brak{\frac{y}{x}}} - 1 = C y 
 \end{align}
-To obtain a plot for this, let's assume, $C=-1$ and $x = 1$. On substituting these values in equation (2), we get, $y = 1$.\\
-Let the $x$ value be limited to 5.
+Let's assume, $C=-1$ and $x = 1$. On substituting these values in equation (7), we get, $y = 1$.\\
+Therefore, the equation is as follows:
 \begin{align*}
-    \implies x_0 = 1.0, y_0 = 1.0, x_{end} = 5.0
+    y = x e^{\brak{1-y}}
 \end{align*}
-The plot of the differential equation 
-\begin{align*}
-    y dx + x \log{\brak{\frac{y}{x}}} dy - 2x dy = 0
-\end{align*}
-is shown below.
+Therefore, the curve generated using both the above mentioned methods for the given differential equation (1) is shown below:
 \begin{figure}[H]
     \centering
     \includegraphics[width = \columnwidth]{figs/fig.png}

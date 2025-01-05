@@ -36,14 +36,12 @@ y_smooth = np.interp(x_smooth, x_points, y_points)
 
 # Plot the points and the smooth curve
 plt.figure(figsize=(10, 6))
-plt.plot(x_points, y_points, 'ro', markersize=2, label="Euler's method points")
-plt.plot(x_smooth, y_smooth, label="Interpolated solution curve", color='blue')
+plt.plot(x_points, y_points, 'ro', markersize=2, label="sim")
+plt.plot(x_smooth, y_smooth, label="theory", color='blue')
 
 # Add labels, title, grid, and legend
-plt.xlabel("x")
-plt.ylabel("y")
+plt.xlabel("X - Axis")
+plt.ylabel("Y - Axis")
 plt.grid(True, which="both", linestyle="--", linewidth=0.5)
 plt.legend()
-
-# Save the plot to a PDF file and display
 plt.show()
