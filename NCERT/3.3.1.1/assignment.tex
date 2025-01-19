@@ -77,17 +77,33 @@ Converting into matrix form, we get:
 \end{align}
 To solve the above equation, we apply LU decomposition to matrix \(\vec{A}\).
 
-We decompose \(\vec{A}\) as:
-\begin{align}
-    \vec{A} &= \vec{LU}, \\
-    \vec{L} &= \text{Lower Triangular Matrix}, \\
-    \vec{U} &= \text{Upper Triangular Matrix}.
-\end{align}
-Let \(y = \vec{U}x\), then we can rewrite the above equation as:
-\begin{align}
-    \vec{A}x = \vec{b} \implies \vec{LU}x = \vec{b} \implies \vec{L}y = \vec{b}
-\end{align}
-Now, the above equation can be solved using forward substitution since \(\vec{L}\) is lower triangular, thus we get the solution vector \(y\). Using this, we solve for \(x\) in \(y = \vec{U}x\) using back substitution knowing that \(\vec{U}\) is upper triangular.
+\subsection*{Step 2: LU Factorization Using Update Equations}
+Given a matrix $\vec{A}$ of size $n \times n$, LU decomposition is performed row by row and column by column. The update equations are as follows:
+
+\textbf{Step-by-Step Procedure:}\\
+1. \textbf{Initialization:}  
+   - Start by initializing $\vec{L}$ as the identity matrix $\vec{L} = \vec{I}$ and $\vec{U}$ as a copy of $\vec{A}$.
+
+2. \textbf{Iterative Update:}  
+   - For each pivot $k = 1, 2, \ldots, n$:  
+     - Compute the entries of $\vec{U}$ using the first update equation.  
+     - Compute the entries of $\vec{L}$ using the second update equation.  
+
+3. \textbf{Result:}  
+   - After completing the iterations, the matrix $\vec{A}$ is decomposed into $\vec{L} \cdot \vec{U}$, where $\vec{L}$ is a lower triangular matrix with ones on the diagonal, and $\vec{U}$ is an upper triangular matrix.
+
+\subsection*{1. Update for $U_{k,j}$ (Entries of $\vec{U}$)}
+For each column $j \geq k$, the entries of $\vec{U}$ in the $k$-th row are updated as:
+\[
+U_{k,j} = A_{k,j} - \sum_{m=1}^{k-1} L_{k,m} \cdot U_{m,j}, \quad \text{for } j \geq k.
+\]
+This equation computes the elements of the upper triangular matrix $\vec{U}$ by eliminating the lower triangular portion of the matrix.
+
+\subsection*{2. Update for $L_{i,k}$ (Entries of $\vec{L}$)}
+For each row $i > k$, the entries of $\vec{L}$ in the $k$-th column are updated as:
+\[
+L_{i,k} = \frac{1}{U_{k,k}} \left( A_{i,k} - \sum_{m=1}^{k-1} L_{i,m} \cdot U_{m,k} \right), \quad \text{for } i > k.
+\]
 
 LU Factorizing \(\vec{A}\), we get:
 \begin{align}
