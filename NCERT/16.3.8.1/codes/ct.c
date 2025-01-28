@@ -1,38 +1,62 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <math.h>
 
-// Function to calculate probabilities
-void simulate_coin_toss(int n, double *probabilities, double *cdf) {
-    int outcomes[4] = {0}; // Counts for 0, 1, 2, 3 heads
-    int i;
+double* binomial_rv(double pval, int no_events) {
+    if (pval < 0 || pval > 1) {
+        printf("Error: Probability pval must be in the range [0, 1].\n");
+        return NULL;
+    }
+    if (no_events <= 0) {
+        printf("Error: Number of events must be greater than 0.\n");
+        return NULL;
+    }
 
-    // Simulate the trials
-    for (i = 0; i < n; i++) {
-        int head_count = 0;
-        for (int toss = 0; toss < 3; toss++) {
-            if (rand() % 2 == 1) { // Random 0 or 1; 1 represents head
-                head_count++;
+    double* pmf = malloc((no_events + 1) * sizeof(double));
+
+    // Initialize the PMF array to 0
+    for (int i = 0; i <= no_events; i++) {
+        pmf[i] = 0.0;
+    }
+
+    int trials = (int)(10000 / fmin(pval, 1 - pval));
+
+    srand(time(NULL));
+
+    // Simulate the Binomial random variable
+    for (int t = 0; t < trials; t++) {
+        int successes = 0;
+        for (int i = 0; i < no_events; i++) {
+            if ((rand() / (double)RAND_MAX) < pval) {
+                successes++;
             }
         }
-        outcomes[head_count]++;
+        pmf[successes] += 1.0 / trials; // Update probability for the number of successes
     }
 
-    // Calculate probabilities (PMF)
-    for (i = 0; i < 4; i++) {
-        probabilities[i] = (double)outcomes[i] / n;
-    }
-
-    // Calculate CDF
-    cdf[0] = probabilities[0];
-    for (i = 1; i < 4; i++) {
-        cdf[i] = cdf[i - 1] + probabilities[i];
-    }
+    return pmf;
 }
 
-// Expose to Python
-__attribute__((visibility("default"))) __attribute__((used))
-void calculate_probabilities(int n, double *probabilities, double *cdf) {
-    srand(time(NULL)); // Seed the random number generator
-    simulate_coin_toss(n, probabilities, cdf);
+int main() {
+    double pval = 0.5; // Fixed probability for each coin flip
+    int no_events = 3; // Number of coins being tossed
+
+    // Call binomial_rv to calculate PMF
+    double* pmf = binomial_rv(pval, no_events);
+    if (pmf != NULL) {
+        // Print the PMF
+        printf("PMF of Binomial random variable:\n");
+        for (int k = 0; k <= no_events; k++) {
+            printf("P(X=%d) = %lf\n", k, pmf[k]);
+        }
+
+        // Calculate the probability of getting exactly 3 heads
+        printf("\nThe probability of getting exactly 3 heads: P(X=3) = %lf\n", pmf[3]);
+
+        // Free the allocated memory for PMF
+        free(pmf);
+    }
+
+    return 0;
 }

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.6)  21 JAN 2025 10:49
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2024.8.6)  28 JAN 2025 15:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1956,27 +1956,28 @@ LaTeX Font Info:    Trying to load font information for TS1+txr on input line 6
 
 (/usr/local/texlive/2024/texmf-dist/tex/latex/txfonts/ts1txr.fd
 File: ts1txr.fd 2000/12/15 v3.1
-)
-Underfull \hbox (badness 10000) in paragraph at lines 85--86
-
- []
-
-[1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr/l
-ocal/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
+) [1{/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map}{/usr
+/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 ]
-LaTeX Font Info:    Trying to load font information for OT1+txtt on input line 
-115.
+<figs/pmf.png, id=56, 578.16pt x 433.62pt>
+File: figs/pmf.png Graphic file (type png)
+<use figs/pmf.png>
+Package pdftex.def Info: figs/pmf.png  used on input line 117.
+(pdftex.def)             Requested size: 364.1953pt x 273.14235pt.
 
-(/usr/local/texlive/2024/texmf-dist/tex/latex/txfonts/ot1txtt.fd
-File: ot1txtt.fd 2000/12/15 v3.1
-) [2]
-<figs/fig.png, id=63, 722.7pt x 433.62pt>
-File: figs/fig.png Graphic file (type png)
-<use figs/fig.png>
-Package pdftex.def Info: figs/fig.png  used on input line 157.
-(pdftex.def)             Requested size: 364.1953pt x 218.51653pt.
- [3 <./figs/fig.png>] (./assignment.aux)
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+<figs/cdf.png, id=58, 578.16pt x 433.62pt>
+File: figs/cdf.png Graphic file (type png)
+<use figs/cdf.png>
+Package pdftex.def Info: figs/cdf.png  used on input line 122.
+(pdftex.def)             Requested size: 364.1953pt x 273.14235pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[2] [3 <./figs/pmf.png>] [4 <./figs/cdf.png>] (./assignment.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2020/03/25>
@@ -1992,26 +1993,25 @@ Package rerunfilecheck Info: Checksums for `assignment.out':
 (rerunfilecheck)             After:  D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 53217 strings out of 474116
- 1264579 string characters out of 5743683
- 1936187 words of memory out of 5000000
- 74745 multiletter control sequences out of 15000+600000
- 624613 words of font info for 172 fonts, out of 8000000 for 9000
+ 53198 strings out of 474116
+ 1264213 string characters out of 5743683
+ 1948187 words of memory out of 5000000
+ 74723 multiletter control sequences out of 15000+600000
+ 627029 words of font info for 175 fonts, out of 8000000 for 9000
  1144 hyphenation exceptions out of 8191
- 109i,7n,109p,1200b,1133s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 109i,16n,109p,1200b,1030s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxmi.pfb></us
 r/local/texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxr.pfb></usr/local
 /texlive/2024/texmf-dist/fonts/type1/public/txfonts/rtxsc.pfb></usr/local/texli
 ve/2024/texmf-dist/fonts/type1/public/txfonts/txex.pfb></usr/local/texlive/2024
 /texmf-dist/fonts/type1/public/txfonts/txsy.pfb></usr/local/texlive/2024/texmf-
-dist/fonts/type1/public/txfonts/txtt.pfb></usr/local/texlive/2024/texmf-dist/fo
-nts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/
-urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/times/
-utmri8a.pfb>
-Output written on assignment.pdf (3 pages, 81854 bytes).
+dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts
+/type1/urw/times/utmr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw
+/times/utmri8a.pfb>
+Output written on assignment.pdf (4 pages, 92148 bytes).
 PDF statistics:
- 118 PDF objects out of 1000 (max. 8388607)
- 76 compressed objects within 1 object stream
- 21 named destinations out of 1000 (max. 500000)
- 114 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 121 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
+ 24 named destinations out of 1000 (max. 500000)
+ 119 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -58,103 +58,69 @@
 \section*{Exercise : 16.3}
 \begin{enumerate}
 \item [8.1)] Three coins are tossed once, what is the probability of getting three heads?\\
-\textbf{Solution:}\\
-\textbf{Textual solution: }\\
-When three coins are tossed, the sample space is:
-\[
-S = \{\text{HHH, HHT, HTH, HTT, THH, THT, TTH, TTT}\}
-\]
-where:
-- H represents heads.
-- T represents tails.
-
-The total number of outcomes in the sample space is:
-\[
-|S| = 8
-\]
-
-The event \( A \) of getting 3 heads (HHH) contains only one favorable outcome:
-\[
-A = \{\text{HHH}\}
-\]
-Thus, the probability of \( A \) is:
-\[
-P(A) = \frac{\text{Number of favorable outcomes}}{\text{Total number of outcomes}} = \frac{1}{8}
-\]
-
-\textbf{Computational solution: }\\
-
-\section*{Introduction}
-This document explains the computational process of determining the probability distribution of the number of heads when a coin is tossed three times. The implementation involves two components:
-\begin{itemize}
-    \item A \textbf{C program} to perform the simulation, calculate the probabilities (PMF), and the cumulative distribution function (CDF).
-    \item A \textbf{Python script} to use the results from the C program and generate a plot of the probability.
-\end{itemize}
-
-\section*{Definitions}
-Let the random variable \( X \) represent the number of heads when three fair coins are tossed. The possible values of \( X \) are:
-\[
-X \in \{0, 1, 2, 3\}.
-\]
-\begin{itemize}
-    \item \textbf{Probability Mass Function (PMF):} The PMF of \( X \) is defined as:
-    \[
-    P(X = x) = \frac{\text{Number of occurrences of } x}{\text{Total number of trials}},
-    \]
-    where \( x \in \{0, 1, 2, 3\} \).
-    \item \textbf{Cumulative Distribution Function (CDF):} The CDF of \( X \) is defined as:
-    \[
-    F(X = x) = \sum_{k=0}^{x} P(X = k),
-    \]
-    which gives the cumulative probability of obtaining \( k \) or fewer heads.
-\end{itemize}
-
-\section*{C Program Implementation}
-The C program performs the following steps:
+\textbf{Solution: }\\
+Define a discrete random variable X = number of heads\newline
+We will take our random variable as a sum of outcomes of three Bernoulli random variables
+\begin{align}
+\quad X = X_1+X_2+X_3
+\end{align}
+Where
+\begin{align}
+X_i = 
+\begin{cases}
+\quad 1, & \text{Outcome in Heads}\\
+\quad 0, & \text{Outcome in Tails}
+\end{cases}\\
+p_{X_i}(n) = 
+\begin{cases}
+\quad 1-p, & n = 0\\
+\quad p, & n = 1
+\end{cases}
+\end{align}
+Where $p=\frac{1}{2}$\newline
+Using properties of Z-Transform of PMF
+\begin{align}
+\quad M_X(z) &= M_{X_1}(z)M_{X_2}(z)M_{X_3}(z)\\
+\quad M_{X_1}(z) &= \sum_{n=-\infty}^{\infty}p_{X_1}(n)z^{-n} = (1-p)+pz^{-1}\\
+\quad M_{X_2}(z) &= \sum_{n=-\infty}^{\infty}p_{X_2}(n)z^{-n} = (1-p)+pz^{-1}\\
+\quad M_{X_3}(z) &= \sum_{n=-\infty}^{\infty}p_{X_3}(n)z^{-n} = (1-p)+pz^{-1}\\
+\quad M_X(z) &= ((1-p)+pz^{-1})^3\\
+\quad &= \sum_{n=-\infty}^{\infty}\comb{3}{n}(1-p)^{3-n}p^nz^{-n}\\
+\quad p_{X}(n) &= \comb{3}{n}p^{n}(1-p)^{3-n}\\
+\quad p_{X}(n) &= \frac{\comb{3}{n}}{8}
+\end{align}
+The Probability Mass Function (PMF) for the given random variable is
+\begin{align}
+\quad p_X(n) =
+\begin{cases}
+\quad \frac{1}{8}, & n = 0 \\
+\quad \frac{3}{8}, & n = 1 \\
+\quad \frac{3}{8}, & n = 2 \\
+\quad \frac{1}{8}, & n = 3 \\
+\end{cases}
+\end{align}
+The probability of getting three heads is
+\begin{align}
+\quad p_X(3) = \frac{1}{8}
+\end{align}
+Simulation:
+\newline
+To run a simulation we need to generate random numbers with uniform probability, which is done
+as shown below:
 \begin{enumerate}
-    \item Simulate \( n \) trials of tossing three coins using the \texttt{rand()} function to generate random outcomes (head or tail).
-    \item Count the number of occurrences of 0, 1, 2, and 3 heads across all trials.
-    \item Compute the PMF:
-    \[
-    P(X = x) = \frac{\text{Number of occurrences of } x}{n}, \quad \text{for } x \in \{0, 1, 2, 3\}.
-    \]
-    \item Compute the CDF using the PMF:
-    \[
-    F(X = x) = \sum_{k=0}^{x} P(X = k).
-    \]
-    \item Expose the results (PMF and CDF) as arrays for use in Python.
+  \item Generate a random number by calling rand(). It generates a random number between 0 and RANDMAX
+  \item Divide the generated number by RANDMAX so that it becomes a real number in the range [0, 1)
+  \item If the number is less than $p$, take it as event happened, else the event did not happen
 \end{enumerate}
-
-\section*{Python Script Implementation}
-The Python script:
-\begin{enumerate}
-    \item Loads the shared object file (\texttt{.so}) created by the C program.
-    \item Calls the \texttt{calculate\_probabilities} function in the C program, passing the number of trials (\( n \)) and retrieving the PMF and CDF as arrays.
-    \item Plots the PMF as a stem plot, showing the probabilities for each outcome (0, 1, 2, and 3 heads).
-\end{enumerate}
-
-\section*{Use of CDF in Computation}
-The CDF is computed in the C program using the PMF:
-\[
-F(X = x) = F(X = x-1) + P(X = x), \quad \text{for } x \geq 1,
-\]
-with the initial condition:
-\[
-F(X = 0) = P(X = 0).
-\]
-The Python script does not directly use the CDF but focuses on visualizing the PMF.
-
-\section*{Visualization}
-The Python script generates a stem plot of the PMF, illustrating the probabilities for each outcome:
-\[
-P(X = 0), P(X = 1), P(X = 2), P(X = 3).
-\]
-
-\section*{Conclusion}
-This computational process combines the efficiency of C for numerical simulation and the versatility of Python for visualization. The CDF plays a key role in ensuring the correctness of cumulative probabilities, which validates the PMF computation.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=\columnwidth]{figs/fig.png}
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=\columnwidth]{figs/pmf.png}
+    \caption{Probability Mass Function of given Random variable}
+\end{figure}
+\begin{figure}[h!]
+   \centering
+   \includegraphics[width=\columnwidth]{figs/cdf.png}
+    \caption{Cumulative Distribution Function of given Random variable}
 \end{figure}
 \end{enumerate}
 \end{document}
